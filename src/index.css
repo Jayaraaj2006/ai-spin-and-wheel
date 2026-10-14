@@ -1,0 +1,203 @@
+@import "tailwindcss";
+
+@theme {
+  /* Editorial Industrial Color Tokens */
+  --color-bg-primary: #171A1F;
+  --color-bg-deep: #101216;
+  --color-text-primary: #F2EEE5;
+  --color-text-secondary: #B9B3A8;
+  --color-accent: #D9653B;
+  --color-accent-hover: #E27750;
+  --color-accent-secondary: #657568;
+  --color-muted-blue: #6F8799;
+  --color-border: #3A3B3A;
+  --color-card: #1D2024;
+
+  /* Typography Font Families */
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  /* Reusable Design Tokens - Editorial Industrial Theme */
+  --bg-primary: #171A1F;
+  --bg-deep: #101216;
+  --text-primary: #F2EEE5;
+  --text-secondary: #B9B3A8;
+  --accent: #D9653B;
+  --accent-hover: #E27750;
+  --accent-muted: rgba(217, 101, 59, 0.15);
+  --accent-secondary: #657568;
+  --muted-blue: #6F8799;
+  --border: #3A3B3A;
+  --card: #1D2024;
+
+  /* Typography Hierarchy */
+  --font-heading: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  font-family: var(--font-body);
+  color-scheme: dark;
+}
+
+/* Base Body Setup */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Hierarchy Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+/* Shared Typography Utility Classes */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Editorial Industrial Blueprint & Drafting Grid */
+.tech-grid-pattern {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(58, 59, 58, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(58, 59, 58, 0.16) 1px, transparent 1px);
+}
+
+/* Precision Corner Marks for Architectural Cards */
+.corner-marks {
+  position: relative;
+}
+
+.corner-marks::before,
+.corner-marks::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.corner-marks::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+}
+
+.corner-marks::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--accent);
+  border-right: 2px solid var(--accent);
+}
+
+/* Custom Industrial Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Text Selection using Burnt Orange Accent */
+::selection {
+  background-color: rgba(217, 101, 59, 0.35);
+  color: var(--text-primary);
+}
+
+/* Wheel Slice Typography using Heading Font */
+.wheel-slice-text {
+  font-family: var(--font-heading);
+  user-select: none;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Print Styles for the Problem Brief */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    background-image: none !important;
+  }
+  
+  header, footer, .no-print, button:not(.print-include) {
+    display: none !important;
+  }
+
+  .print-area {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #3A3B3A !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    max-width: 100% !important;
+  }
+
+  .print-area * {
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    background-color: transparent !important;
+  }
+}
